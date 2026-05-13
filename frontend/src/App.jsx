@@ -305,7 +305,7 @@ export default function App() {
                       <span>{entry.due_date ? `Due ${entry.due_date}` : "No due date"}</span>
                       <span>
                         {entry.tags
-                          ? entry.tags.split(",").map((tag) => tag.trim()).filter(Boolean).join("  ")
+                          ? entry.tags.split(",").map((tag) => tag.trim()).filter(Boolean).join(" | ")
                           : "No tags"}
                       </span>
                     </div>
