@@ -81,7 +81,7 @@ jobs:
           script: |
             echo "IMAGE_BASE=${{ env.IMAGE_BASE }}" > ${{ env.DEPLOY_DIR }}/.env
             echo "VITE_API_BASE_URL=http://${{ secrets.EC2_HOST }}:8000" >> ${{ env.DEPLOY_DIR }}/.env
-            docker login ghcr.io -u "$GHCR_USER" -p "$GHCR_PAT"
-            docker compose -f ${{ env.DEPLOY_DIR }}/${{ env.COMPOSE_FILE }} pull
-            docker compose -f ${{ env.DEPLOY_DIR }}/${{ env.COMPOSE_FILE }} up -d
-            docker logout ghcr.io
+            sudo docker login ghcr.io -u "$GHCR_USER" -p "$GHCR_PAT"
+            sudo docker-compose -f ${{ env.DEPLOY_DIR }}/${{ env.COMPOSE_FILE }} pull
+            sudo docker-compose -f ${{ env.DEPLOY_DIR }}/${{ env.COMPOSE_FILE }} up -d
+            sudo docker logout ghcr.io
