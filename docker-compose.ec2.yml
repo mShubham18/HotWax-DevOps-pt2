@@ -19,7 +19,7 @@ services:
       - "5432:5432"
 
   backend:
-    image: monoitachi/hotwax-devops-backend:latest
+    image: ${IMAGE_BASE}-backend:latest
     container_name: fastapi-react-backend
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/appdb
@@ -31,10 +31,10 @@ services:
       - "8000:8000"
 
   frontend:
-    image: monoitachi/hotwax-devops-frontend:latest
+    image: ${IMAGE_BASE}-frontend:latest
     container_name: fastapi-react-frontend
     environment:
-      VITE_API_BASE_URL: http://ec2-3-111-169-139.ap-south-1.compute.amazonaws.com:8000
+      VITE_API_BASE_URL: http://ec2-13-233-89-222.ap-south-1.compute.amazonaws.com:8000
     depends_on:
       - backend
     restart: unless-stopped
